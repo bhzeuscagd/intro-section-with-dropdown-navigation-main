@@ -1,3 +1,9 @@
+---
+import "../styles/global.css";
+import "@fontsource-variable/epilogue";
+import Icons from "../components/UI/Icons.astro";
+---
+
 <!doctype html>
 <html lang="en">
 	<head>
@@ -8,6 +14,7 @@
 		<title>Astro Basics</title>
 	</head>
 	<body>
+		<Icons name="logo" width={100} height={100} class="text-red-500" />
 		<slot />
 	</body>
 </html>

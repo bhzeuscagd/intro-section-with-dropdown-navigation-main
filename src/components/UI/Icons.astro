@@ -1,0 +1,38 @@
+---
+interface Props {
+    name: string;
+    class?: string;
+    width?: string | number;
+    height?: string | number;
+}
+
+const { name, class: className, width, height } = Astro.props;
+
+const viewBoxMap: Record<string, string> = {
+    "client-audiophile": "0 0 73 36",
+    "client-databiz": "0 0 114 20",
+    "client-maker": "0 0 83 24",
+    "client-meet": "0 0 90 20",
+    "icon-arrow-down": "0 0 10 6",
+    "icon-arrow-up": "0 0 10 6",
+    "icon-calendar": "0 0 16 16",
+    "icon-close-menu": "0 0 26 26",
+    "icon-menu": "0 0 32 18",
+    "icon-planning": "0 0 16 16",
+    "icon-reminders": "0 0 13 17",
+    "icon-todo": "0 0 14 16",
+    logo: "0 0 84 27",
+};
+
+const viewBox = viewBoxMap[name] || "0 0 24 24";
+---
+
+<svg
+    viewBox={viewBox}
+    width={width}
+    height={height}
+    class={`fill-current ${className}`}
+    aria-hidden="true"
+>
+    <use href={`/sprite.svg#${name}`}></use>
+</svg>

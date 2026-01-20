@@ -1,1 +1,8 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Epilogue Variable', sans-serif;
+  --neutral-50: hsl(0, 0%, 98%);
+  --neutral-500: hsl(0, 0%, 41%);
+  --neutral-950: hsl(0, 0%, 8%);
+}
