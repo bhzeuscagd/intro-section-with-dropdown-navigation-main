@@ -6,7 +6,7 @@ interface Props {
 
     items: {
         text: string;
-        icon: string;
+        icon?: string;
     }[];
 }
 
@@ -36,7 +36,11 @@ const { name, items } = Astro.props;
                         href="#"
                         class="leading-0 flex items-center px-10 py-1 gap-2"
                     >
-                        <Icons name={item.icon} width={20} height={"auto"} />
+                        <Icons
+                            name={item.icon ?? ""}
+                            width={20}
+                            height={"auto"}
+                        />
                         <span> {item.text} </span>
                     </a>
                 </li>

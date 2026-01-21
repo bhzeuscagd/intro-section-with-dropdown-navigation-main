@@ -1,0 +1,58 @@
+---
+import Icons from "../UI/Icons.astro";
+import DropDown from "../../components/Header/Header_UI/DropDown.astro";
+import Button from "../UI/Button.astro";
+---
+
+<div
+    class="fixed top-0 right-0 h-full w-64 bg-white z-50 shadow-lg transform translate-x-full transition-transform duration-300 peer-checked:translate-x-0 md:static md:translate-x-0 md:w-auto md:h-auto md:bg-transparent md:shadow-none md:flex md:items-center"
+>
+    <!-- BOTÓN CERRAR (X) - Solo móvil -->
+    <div class="flex justify-end p-4 md:hidden">
+        <label
+            for="menu"
+            class="cursor-pointer text-gray-500 text-xl font-bold"
+        >
+            <Icons name="icon-close-menu" width={30} height={"auto"} />
+        </label>
+    </div>
+
+    <!-- LISTA DE ENLACES -->
+    <ul class="flex flex-col p-4 text-gray-700 font-medium w-full">
+        <!--DROPDOWN 1 -->
+        <DropDown
+            name="Features"
+            items={[
+                { text: "Todo List", icon: "icon-todo" },
+                { text: "Calendar", icon: "icon-calendar" },
+                { text: "Reminders", icon: "icon-reminders" },
+                { text: "Planning", icon: "icon-planning" },
+            ]}
+        />
+        <!-- DROPDOWN 2 -->
+        <DropDown
+            name="Company"
+            items={[
+                { text: "History" },
+                { text: "Our Team" },
+                { text: "Blog" },
+            ]}
+        />
+
+        <li>
+            <a href="#" class="block py-2">Careers</a>
+        </li>
+        <li>
+            <a href="#" class="block py-2">About</a>
+        </li>
+
+        <li>
+            <a href="#" class="block py-2 transition mt-4 text-center">Login</a>
+        </li>
+        <Button
+            text="Register"
+            href="#"
+            class="mt-4 text-center text-neutral-700"
+        />
+    </ul>
+</div>

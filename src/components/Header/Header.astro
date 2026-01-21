@@ -1,5 +1,6 @@
 ---
 import Icons from "../UI/Icons.astro";
+import Menu from "./Menu.astro";
 ---
 
 <header class="flex justify-between items-center p-4">
@@ -17,70 +18,5 @@ import Icons from "../UI/Icons.astro";
         class="fixed inset-0 bg-black/40 z-40 hidden peer-checked:block md:hidden transition-opacity"
     ></label>
 
-    <div
-        class="fixed top-0 right-0 h-full w-64 bg-white z-50 shadow-lg transform translate-x-full transition-transform duration-300 peer-checked:translate-x-0 md:static md:translate-x-0 md:w-auto md:h-auto md:bg-transparent md:shadow-none md:flex md:items-center"
-    >
-        <!-- BOTÓN CERRAR (X) - Solo móvil -->
-        <div class="flex justify-end p-4 md:hidden">
-            <label
-                for="menu"
-                class="cursor-pointer text-gray-500 hover:text-red-500 text-xl font-bold"
-            >
-                <Icons name="icon-close-menu" width={30} height={"auto"} />
-            </label>
-        </div>
-
-        <!-- LISTA DE ENLACES -->
-        <ul
-            class="flex flex-col p-4 md:p-0 md:flex-row md:gap-6 text-gray-700 font-medium w-full"
-        >
-            <li>
-                <a href="#" class="block py-2 hover:text-blue-600">Inicio</a>
-            </li>
-
-     
-
-            <!-- DROPDOWN 2 -->
-            <li class="relative group z-10">
-                <input type="checkbox" id="drop2" class="peer/d2 hidden" />
-                <label
-                    for="drop2"
-                    class="block py-2 cursor-pointer md:hidden hover:text-blue-600 flex justify-between"
-                    >Categorías <span>▼</span></label
-                >
-                <span
-                    class="hidden md:block py-2 cursor-pointer hover:text-blue-600"
-                    >Categorías ▼</span
-                >
-
-                <!-- Submenú -->
-                <ul
-                    class="hidden peer-checked/d2:block md:hidden md:group-hover:block md:absolute md:top-full md:left-0 md:bg-white md:shadow-lg md:border md:min-w-[160px] md:rounded bg-gray-50 pl-4 md:pl-0"
-                >
-                    <li>
-                        <a
-                            href="#"
-                            class="block py-2 md:px-4 hover:bg-gray-100 hover:text-blue-600"
-                            >Ropa</a
-                        >
-                    </li>
-                    <li>
-                        <a
-                            href="#"
-                            class="block py-2 md:px-4 hover:bg-gray-100 hover:text-blue-600"
-                            >Electrónica</a
-                        >
-                    </li>
-                </ul>
-            </li>
-
-            <li>
-                <a
-                    href="#"
-                    class="block py-2 md:px-4 md:bg-blue-600 md:text-white md:rounded hover:bg-blue-700 transition mt-4 md:mt-0 text-center"
-                    >Login</a
-                >
-            </li>
-        </ul>
-    </div>
+    <Menu />
 </header>
