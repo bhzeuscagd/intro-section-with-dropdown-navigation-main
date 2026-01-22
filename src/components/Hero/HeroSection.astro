@@ -4,8 +4,13 @@ import HeroImage from "./HeroImage.astro";
 import Clients from "../Clients.astro";
 ---
 
-<section class="flex flex-col h-screen">
+<section
+    class="flex flex-col h-screen lg:flex-row-reverse lg:justify-between lg:items-center
+    lg:max-w-7xl lg:mx-auto lg:px-20"
+>
     <HeroImage />
-    <HeroContent />
-    <Clients />
+    <div class="lg:w-1/2">
+        <HeroContent />
+        <Clients />
+    </div>
 </section>
