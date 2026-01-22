@@ -12,8 +12,8 @@
  */
 import { getImage } from "astro:assets";
 // NOTE: Verify paths match your project structure
-import mobilHero from "./public/image-hero-mobile.png";
-import desktopHero from "./public/image-hero-desktop.png";
+import mobilHero from "../../assets/images/image-hero-mobile.png";
+import desktopHero from "../../assets/images/image-hero-desktop.png";
 
 const mobileImg = await getImage({
     src: mobilHero,
@@ -60,7 +60,7 @@ const desktopImg = await getImage({
         -->
         <img
             src={desktopImg.src}
-            alt="Hero Image"
+            alt="Abstract visualization of remote work productivity"
             class="w-full h-auto object-cover"
             loading="eager"
         />
