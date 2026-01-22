@@ -5,12 +5,18 @@ import Clients from "../Clients.astro";
 ---
 
 <section
-    class="flex flex-col h-screen lg:flex-row-reverse lg:justify-between lg:items-center
+    class="flex flex-col lg:h-screen lg:flex-row-reverse lg:justify-between
     lg:max-w-7xl lg:mx-auto lg:px-20"
 >
+    <!-- Removed lg:items-center to allow children to stretch -->
     <HeroImage />
-    <div class="lg:w-1/2">
-        <HeroContent />
+
+    <div class="lg:w-1/2 lg:flex lg:flex-col lg:pb-12">
+        <!-- Content wrapper takes remaining space and centers vertically -->
+        <div class="flex-1 flex flex-col justify-center">
+            <HeroContent />
+        </div>
+        <!-- Clients sits at the bottom naturally due to flex-1 above -->
         <Clients />
     </div>
 </section>

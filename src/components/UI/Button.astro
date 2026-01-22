@@ -6,14 +6,16 @@ interface Props {
 }
 
 const { text, href, class: className } = Astro.props;
+
+const Tag = href ? "a" : "button";
 ---
 
-<a
+<Tag
     href={href}
     class:list={[
-        "border border-black rounded-2xl lg:rounded-xl px-5 lg:px-5 py-3 lg:py-1.5 font-semibold inline-block hover:border-black hover:text-black hover:border-2 transition-colors ease-in-out duration-300 lg:cursor-pointer",
+        "border border-black rounded-2xl lg:rounded-xl px-5 py-3 font-semibold inline-block hover:border-black hover:text-black hover:border-2 transition-colors ease-in-out duration-300 cursor-pointer",
         className,
     ]}
 >
     {text}
-</a>
+</Tag>

@@ -2,22 +2,24 @@
 import Button from "../UI/Button.astro";
 ---
 
-<section class="my-10 mx-3 lg:w-1/2 lg:m-0">
+<section class="my-10 mx-3 lg:w-full lg:m-0">
     <div
-        class="flex flex-col items-center justify-center gap-4 lg:items-start lg:w-full"
+        class="flex flex-col items-center justify-center gap-10 lg:items-start lg:w-full lg:gap-12"
     >
         <h1
-            class="font-bold text-4xl text-center lg:text-start lg:text-7xl lg:w-1/2"
+            class="font-bold text-4xl text-center lg:text-start lg:text-7xl lg:w-full"
         >
-            Make remote work
+            Make <br /> remote work
         </h1>
-        <p class="text-center font-semibold text-neutral-500">
-            Get your team in sync, no matter your location.Steamline processes,
+        <p
+            class="text-center font-semibold text-neutral-500 lg:text-start lg:w-full lg:text-md lg:max-w-sm"
+        >
+            Get your team in sync, no matter your location. Steamline processes,
             create team rituals, and watch productivity soar.
         </p>
         <Button
             text="Learn more"
-            class="text-neutral-50 bg-neutral-950 hover:bg-neutral-50 hover:text-neutral-950 transition-colors"
+            class="text-neutral-50 bg-neutral-950 hover:bg-neutral-50 hover:text-neutral-950 transition-colors border border-black"
         />
     </div>
 </section>
