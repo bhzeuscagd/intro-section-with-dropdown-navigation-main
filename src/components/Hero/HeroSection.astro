@@ -1,22 +1,61 @@
 ---
+/**
+ * @component HeroSection
+ * @description
+ * [EN] Top-level container for the landing page hero area.
+ * Implements a Split Screen layout:
+ * - Mobile: Stacked Vertical (Image Top, Content Bottom).
+ * - Desktop: Two Columns layout (Content Left, Image Right) with footer alignment for Clients.
+ *
+ * [ES] Contenedor principal del área hero de la landing page.
+ * Implementa un diseño de Pantalla Dividida:
+ * - Móvil: Pila Vertical (Imagen Arriba, Contenido Abajo).
+ * - Escritorio: Diseño de Dos Columnas (Contenido Izquierda, Imagen Derecha) con alineación al pie para Clientes.
+ */
 import HeroContent from "./HeroContent.astro";
 import HeroImage from "./HeroImage.astro";
 import Clients from "../Clients.astro";
 ---
 
+<!-- 
+    [EN] Layout Strategy:
+    - flex-col: Stacked by default for mobile first.
+    - lg:h-screen: Forces full viewport height on desktop for immersive feel.
+    - lg:flex-row-reverse: On desktop, visually swaps Image (written first for DOM order/LCP) to the Right, Content to the Left.
+    
+    [ES] Estrategia de Diseño:
+    - flex-col: Apilado por defecto para mobile first.
+    - lg:h-screen: Fuerza altura completa de pantalla en escritorio para sensación inmersiva.
+    - lg:flex-row-reverse: En escritorio, invierte visualmente: Imagen (escrita primero para orden DOM/LCP) a la Derecha, Contenido a la Izquierda.
+-->
 <section
     class="flex flex-col lg:h-screen lg:flex-row-reverse lg:justify-between
     lg:max-w-7xl lg:mx-auto lg:px-20"
 >
-    <!-- Removed lg:items-center to allow children to stretch -->
+    <!-- 
+        [EN] Hero Image triggers LCP. Placed first in DOM for priority loading.
+        [ES] Hero Image dispara el LCP. Colocada primero en el DOM para carga prioritaria.
+    -->
     <HeroImage />
 
+    <!-- 
+        [EN] Left Column (Desktop) Container
+        - Uses flex-col to manage vertical distribution between Content and Clients footer.
+        [ES] Contenedor Columna Izquierda (Escritorio)
+        - Usa flex-col para gestionar distribución vertical entre Contenido y pie de Clientes.
+    -->
     <div class="lg:w-1/2 lg:flex lg:flex-col lg:pb-12">
-        <!-- Content wrapper takes remaining space and centers vertically -->
+        <!-- 
+            [EN] Vertical Centering Wrapper
+            - flex-1: Pushes "Clients" to the bottom by taking up all available remaining space.
+            [ES] Envoltorio de Centrado Vertical
+            - flex-1: Empuja "Clients" hacia abajo ocupando todo el espacio restante disponible.
+        -->
         <div class="flex-1 flex flex-col justify-center">
             <HeroContent />
         </div>
-        <!-- Clients sits at the bottom naturally due to flex-1 above -->
+
+        <!-- [EN] Footer Section / [ES] Sección de Pie -->
         <Clients />
     </div>
 </section>

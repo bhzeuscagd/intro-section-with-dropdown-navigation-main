@@ -1,4 +1,13 @@
 ---
+/**
+ * @component Header
+ * @description
+ * [EN] Main layout header. Orchestrates the Logo, Mobile Menu Trigger, and Navigation.
+ * Acts as the state controller for the mobile menu using the "Checkbox Hack".
+ *
+ * [ES] Encabezado principal del layout. Orquestra el Logo, el disparador del Menú Móvil y la Navegación.
+ * Actúa como controlador de estado para el menú móvil usando el "Checkbox Hack".
+ */
 import Icons from "../UI/Icons.astro";
 import Menu from "./Menu.astro";
 ---
@@ -6,15 +15,30 @@ import Menu from "./Menu.astro";
 <header
     class="flex justify-between items-center p-4 lg:align-center lg:justify-start lg:py-0 lg:px-5"
 >
+    <!-- Logo -->
     <div>
         <Icons name="logo" width={80} height={"auto"} />
     </div>
-    <!-- Checkbox para el menu -->
+
+    <!-- 
+        [EN] Mobile Menu State Controller (Checkbox Hack)
+        - The checkbox (#menu) holds the global open/closed state.
+        - The label acts as the toggle button (Hamburger icon).
+        - The overlay label closes the menu when clicking outside.
+        
+        [ES] Controlador de Estado del Menú Móvil (Checkbox Hack)
+        - El checkbox (#menu) mantiene el estado global abierto/cerrado.
+        - El label actúa como botón disparador (icono Hamburguesa).
+        - El label overlay cierra el menú al hacer click fuera.
+    -->
     <input type="checkbox" id="menu" class="peer hidden" />
+
+    <!-- [EN] Hamburger Trigger / [ES] Disparador Hamburguesa -->
     <label for="menu" class="cursor-pointer lg:hidden">
         <Icons name="icon-menu" width={30} height={"auto"} />
     </label>
 
+    <!-- [EN] Backdrop Overlay / [ES] Capa de Fondo Oscuro -->
     <label
         for="menu"
         class="fixed inset-0 bg-black/40 z-40 hidden peer-checked:block md:hidden transition-opacity lg:hidden"

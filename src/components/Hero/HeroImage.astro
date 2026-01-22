@@ -1,19 +1,31 @@
 ---
+/**
+ * @component HeroImage
+ * @description
+ * [EN] Renders the main Hero image with "Art Direction" strategy.
+ * Uses Astro's `getImage` to generate optimized versions (WebP) for different viewports.
+ * Serves a vertical image for mobile and a horizontal one for desktop.
+ *
+ * [ES] Renderiza la imagen principal del Hero con estrategia de "Dirección de Arte".
+ * Usa `getImage` de Astro para generar versiones optimizadas (WebP) para diferentes viewports.
+ * Sirve una imagen vertical para móvil y una horizontal para escritorio.
+ */
 import { getImage } from "astro:assets";
+// NOTE: Verify paths match your project structure
 import mobilHero from "./public/image-hero-mobile.png";
 import desktopHero from "./public/image-hero-desktop.png";
 
 const mobileImg = await getImage({
     src: mobilHero,
     format: "webp",
-    width: 750, // Ancho típico móvil
+    width: 750, // [EN] Mobile standard width / [ES] Ancho estándar móvil
     quality: "80",
 });
 
 const desktopImg = await getImage({
     src: desktopHero,
     format: "webp",
-    width: 1920, // Full HD standard
+    width: 1920, // [EN] Full HD standard / [ES] Estándar Full HD
     quality: "80",
 });
 ---
@@ -21,11 +33,31 @@ const desktopImg = await getImage({
 <section
     class="relative w-full h-auto overflow-hidden lg:w-1/2 lg:h-screen lg:object-cover"
 >
+    <!-- 
+        [EN] Picture Element for Art Direction
+        - Allows changing the source file based on media queries (not just resizing).
+        - Prevents downloading the desktop image on mobile devices (Performance win).
+        
+        [ES] Elemento Picture para Dirección de Arte
+        - Permite cambiar el archivo fuente según media queries (no solo redimensionar).
+        - Evita descargar la imagen de escritorio en dispositivos móviles (Victoria de rendimiento).
+    -->
     <picture class="w-full h-auto object-cover">
-        <!-- Mobile -->
+        <!-- [EN] Mobile Source (< 768px) / [ES] Fuente Móvil -->
         <source media="(max-width: 768px)" srcset={mobileImg.src} />
-        <!-- Desktop -->
+
+        <!-- [EN] Desktop Source (> 769px) / [ES] Fuente Escritorio -->
         <source media="(min-width: 769px)" srcset={desktopImg.src} />
+
+        <!-- 
+            [EN] Fallback Image
+            - Validates HTML standard.
+            - loading="eager": Critical for LCP (Largest Contentful Paint).
+            
+            [ES] Imagen de Respaldo
+            - Valida el estándar HTML.
+            - loading="eager": Crítico para LCP.
+        -->
         <img
             src={desktopImg.src}
             alt="Hero Image"

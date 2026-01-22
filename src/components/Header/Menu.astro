@@ -1,14 +1,38 @@
 ---
+/**
+ * @component Menu
+ * @description
+ * [EN] Responsive navigation container.
+ * - Mobile: Off-canvas sidebar that slides in from the right.
+ * - Desktop: Horizontal flex bar integrated into the header.
+ *
+ * [ES] Contenedor de navegación responsivo.
+ * - Móvil: Barra lateral fuera del canvas (off-canvas) que se desliza desde la derecha.
+ * - Escritorio: Barra flex horizontal integrada en el encabezado.
+ */
 import Icons from "../UI/Icons.astro";
 import DropDown from "../../components/Header/Header_UI/DropDown.astro";
 import Button from "../UI/Button.astro";
 ---
 
+<!-- 
+    [EN] Main Container Logic:
+    - fixed top-0 right-0 h-full w-64: Fixed sidebar dimensions for mobile.
+    - translate-x-full: Hidden by default (pushed off-screen).
+    - peer-checked:translate-x-0: Slides in when "menu" checkbox (in Header) is checked.
+    - md:static ...: Resets all fixed positioning for tablet/desktop to flow naturally.
+    
+    [ES] Lógica del Contenedor Principal:
+    - fixed ...: Dimensiones fijas de barra lateral para móvil.
+    - translate-x-full: Oculto por defecto (empujado fuera de pantalla).
+    - peer-checked:translate-x-0: Se desliza adentro cuando el checkbox "menu" se activa.
+    - md:static ...: Resetea todo posicionamiento fijo en tablet/escritorio para fluir naturalmente.
+-->
 <div
     class="fixed top-0 right-0 h-full w-64 bg-white z-50 shadow-lg transform translate-x-full transition-transform duration-300 peer-checked:translate-x-0 md:static md:translate-x-0 md:w-auto md:h-auto md:bg-transparent md:shadow-none md:flex md:items-center
     lg:flex lg:flex-row lg:w-full lg:h-auto lg:justify-between lg:items-center lg:gap-4"
 >
-    <!-- BOTÓN CERRAR (X) - Solo móvil -->
+    <!-- [EN] Close Button (Mobile Only) / [ES] Botón Cerrar (Solo Móvil) -->
     <div class="flex justify-end p-4 md:hidden lg:hidden">
         <label
             for="menu"
@@ -18,7 +42,7 @@ import Button from "../UI/Button.astro";
         </label>
     </div>
 
-    <!-- LISTA DE ENLACES -->
+    <!-- [EN] Navigation Links / [ES] Enlaces de Navegación -->
     <ul
         class="flex flex-col p-4 text-gray-700 font-medium w-full lg:flex lg:flex-row lg:justify-start lg:items-center lg:gap-10 lg:pl-10"
     >
@@ -44,18 +68,24 @@ import Button from "../UI/Button.astro";
         />
 
         <li>
-            <a href="#" class="block py-2">Careers</a>
+            <a href="#" class="block py-2 hover:text-black transition-colors"
+                >Careers</a
+            >
         </li>
         <li>
-            <a href="#" class="block py-2">About</a>
+            <a href="#" class="block py-2 hover:text-black transition-colors"
+                >About</a
+            >
         </li>
     </ul>
+
+    <!-- [EN] Auth Actions / [ES] Acciones de Autenticación -->
     <div
         class="flex flex-col p-4 lg:flex-row lg:justify-center lg:items-center lg:gap-4"
     >
         <a
             href="#"
-            class="block py-2 transition mt-4 text-center lg:mt-0 lg:py-0 lg:cursor-pointer"
+            class="block py-2 transition mt-4 text-center lg:mt-0 lg:py-0 lg:cursor-pointer hover:text-black"
             >Login</a
         >
 

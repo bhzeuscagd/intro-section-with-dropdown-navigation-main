@@ -1,4 +1,13 @@
 ---
+/**
+ * @component HeroContent
+ * @description
+ * [EN] Displays the main textual content of the Hero section (Headline, Description, CTA).
+ * Handles responsive typography and alignment changes between mobile (centered) and desktop (left-aligned).
+ *
+ * [ES] Muestra el contenido textual principal de la sección Hero (Titular, Descripción, CTA).
+ * Maneja la tipografía responsiva y los cambios de alineación entra móvil (centrado) y escritorio (izquierda).
+ */
 import Button from "../UI/Button.astro";
 ---
 
@@ -6,17 +15,34 @@ import Button from "../UI/Button.astro";
     <div
         class="flex flex-col items-center justify-center gap-10 lg:items-start lg:w-full lg:gap-12"
     >
+        <!-- 
+            [EN] Main Headline
+            - Uses <br/> for controlled line breaks on all screen sizes to match design intent ("Make" / "remote work").
+            
+            [ES] Titular Principal
+            - Usa <br/> para saltos de línea controlados en todos los tamaños para coincidir con el diseño ("Make" / "remote work").
+        -->
         <h1
             class="font-bold text-4xl text-center lg:text-start lg:text-7xl lg:w-full"
         >
             Make <br /> remote work
         </h1>
+
+        <!-- 
+            [EN] Description Paragraph
+            - lg:max-w-sm: Constrains width on desktop to prevent lines from becoming too long (readability).
+            
+            [ES] Párrafo Descripción
+            - lg:max-w-sm: Restringe el ancho en escritorio para evitar líneas demasiado largas (legibilidad).
+        -->
         <p
             class="text-center font-semibold text-neutral-500 lg:text-start lg:w-full lg:text-md lg:max-w-sm"
         >
             Get your team in sync, no matter your location. Steamline processes,
             create team rituals, and watch productivity soar.
         </p>
+
+        <!-- [EN] CTA Button / [ES] Botón de Llamada a la Acción -->
         <Button
             text="Learn more"
             class="text-neutral-50 bg-neutral-950 hover:bg-neutral-50 hover:text-neutral-950 transition-colors border border-black"

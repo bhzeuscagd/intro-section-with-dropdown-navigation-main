@@ -1,4 +1,13 @@
 ---
+/**
+ * @component Button
+ * @description
+ * [EN] Polymorphic UI component that renders either an anchor (<a>) or a button (<button>) element.
+ * Useful for maintaining consistent styling across different interaction types (navigation vs actions).
+ *
+ * [ES] Componente de UI polimórfico que renderiza un anclaje (<a>) o un botón (<button>).
+ * Útil para mantener estilos consistentes a través de diferentes tipos de interacción (navegación vs acciones).
+ */
 interface Props {
     text: string;
     href?: string;
@@ -7,12 +16,23 @@ interface Props {
 
 const { text, href, class: className } = Astro.props;
 
+// [EN] Logic to determine the underlying HTML tag based on the presence of an href prop.
+// [ES] Lógica para determinar la etiqueta HTML subyacente basada en la presencia de la prop href.
 const Tag = href ? "a" : "button";
 ---
 
 <Tag
     href={href}
     class:list={[
+        /* 
+            [EN] Base Styles:
+            - border-black / rounded-2xl: Outline style with rounded corners.
+            - hover:border-2: Increases border width on hover for a subtle interactive effect without layout shift.
+            
+            [ES] Estilos Base:
+            - border-black / rounded-2xl: Estilo de contorno (outline) con esquinas redondeadas.
+            - hover:border-2: Aumenta el grosor del borde al pasar el mouse para un efecto interactivo sutil sin desplazamiento de diseño.
+        */
         "border border-black rounded-2xl lg:rounded-xl px-5 py-3 font-semibold inline-block hover:border-black hover:text-black hover:border-2 transition-colors ease-in-out duration-300 cursor-pointer",
         className,
     ]}

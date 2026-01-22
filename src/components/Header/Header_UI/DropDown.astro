@@ -1,51 +1,85 @@
 ---
+/**
+ * @component DropDown
+ * @description
+ * [EN] Renders a structured dropdown menu for navigation.
+ * Uses the pure CSS "Checkbox Hack" to manage open/close state without client-side JavaScript.
+ * Features distinct styling strategies for mobile (accordion flow) and desktop (absolute positioning).
+ *
+ * [ES] Renderiza un menú desplegable estructurado para navegación.
+ * Utiliza el "Checkbox Hack" de CSS puro para gestionar el estado abierto/cerrado sin JavaScript del lado del cliente.
+ * Presenta estrategias de estilo distintas para móvil (flujo acordeón) y escritorio (posicionamiento absoluto).
+ */
 import Icons from "../../UI/Icons.astro";
 
 interface Props {
     name: string;
-
     items: {
         text: string;
         icon?: string;
     }[];
-
     class?: string;
 }
 
 const { name, items, class: className } = Astro.props;
 ---
 
-<!-- DROPDOWN 1 -->
+<!-- 
+    [EN] Container: "group" enables descendant targeting. "relative" provides anchor for absolute positioning.
+    [ES] Contenedor: "group" habilita selectores descendientes. "relative" provee el anclaje para posicionamiento absoluto.
+-->
 <li class="relative group z-10">
-    <input type="checkbox" id={name} class="peer/d1 hidden" />
-    <label for={name} class="py-2 cursor-pointer flex items-center gap-2"
-        >{name}
-        <span class="md:hidden">
-            <Icons name="icon-arrow-down" width={10} height={"auto"} />
-        </span></label
-    >
-    <span
-        class="hidden py-2 cursor-pointer items-center gap-2 lg:text-9xl"
-        ,className,
-        >{name}
-        <Icons name="icon-arrow-up" width={10} height={"auto"} /></span
-    >
+    <!-- 
+        [EN] State Management: Hidden checkbox drives the UI state via the :checked pseudo-class.
+        [ES] Gestión de Estado: Checkbox oculto controla el estado de la UI mediante la pseudoclase :checked.
+    -->
+    <input type="checkbox" id={name} class="peer hidden" />
 
-    <!-- Submenú -->
-    <ul class="hidden peer-checked/d1:block">
+    <label
+        for={name}
+        class="py-2 cursor-pointer flex items-center gap-2 hover:text-black transition-colors peer-checked:[&>.arrow-down]:hidden peer-checked:[&>.arrow-up]:block"
+    >
+        {name}
+
+        <!-- 
+            [EN] Icons: Toggled via the parent label's peer-checked variant using arbitrary selectors.
+            [ES] Iconos: Alternados mediante la variante peer-checked del label padre usando selectores arbitrarios.
+        -->
+        <span class="block arrow-down">
+            <Icons name="icon-arrow-down" width={10} height={"auto"} />
+        </span>
+        <span class="hidden arrow-up">
+            <Icons name="icon-arrow-up" width={10} height={"auto"} />
+        </span>
+    </label>
+
+    <!-- 
+        [EN] Submenu Panel: 
+        - Default (Mobile): Hidden, becomes block when checked. Flows naturally in document.
+        - Desktop (lg:): Escapes flow (absolute), positioned right-aligned, constrained width.
+        
+        [ES] Panel Submenú:
+        - Por defecto (Móvil): Oculto, pasa a bloque al marcarse. Fluye naturalmente en el documento.
+        - Escritorio (lg:): Escapa del flujo (absolute), alineado a la derecha, ancho ajustado al contenido.
+    -->
+    <ul
+        class="hidden peer-checked:block lg:absolute lg:right-0 lg:top-10 lg:bg-white lg:shadow-xl lg:rounded-2xl lg:p-4 lg:w-max lg:border lg:border-neutral-100"
+    >
         {
             items.map((item) => (
-                <li class="flex py-2">
+                <li class="flex py-2 lg:py-1">
                     <a
                         href="#"
-                        class="leading-0 flex items-center px-10 py-1 gap-2"
+                        class="flex items-center gap-3 px-4 py-1 lg:px-2 lg:py-0 text-gray-500 hover:text-black transition-colors w-full"
                     >
-                        <Icons
-                            name={item.icon ?? ""}
-                            width={20}
-                            height={"auto"}
-                        />
-                        <span class="lg:text-md"> {item.text} </span>
+                        {item.icon && (
+                            <Icons
+                                name={item.icon}
+                                width={16}
+                                height={"auto"}
+                            />
+                        )}
+                        <span class="text-sm"> {item.text} </span>
                     </a>
                 </li>
             ))

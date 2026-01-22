@@ -1,4 +1,13 @@
 ---
+/**
+ * @component Icons
+ * @description
+ * [EN] Reusable SVG component that loads icons from a single sprite sheet (`/sprite.svg`).
+ * This approach reduces HTTP requests and improves performance compared to inline SVGs or individual strings.
+ *
+ * [ES] Componente SVG reutilizable que carga iconos desde una hoja de sprites única (`/sprite.svg`).
+ * Este enfoque reduce las peticiones HTTP y mejora el rendimiento comparado con SVGs en línea o archivos individuales.
+ */
 interface Props {
     name: string;
     class?: string;
@@ -8,6 +17,10 @@ interface Props {
 
 const { name, class: className, width, height } = Astro.props;
 
+// [EN] Map of icon names to their specific viewBox dimensions.
+// Needed because icons in a sprite stack might have different aspect ratios.
+// [ES] Mapa de nombres de iconos a sus dimensiones específicas de viewBox.
+// Necesario porque los iconos en un sprite stack pueden tener diferentes relaciones de aspecto.
 const viewBoxMap: Record<string, string> = {
     "client-audiophile": "0 0 73 36",
     "client-databiz": "0 0 114 20",
@@ -27,6 +40,15 @@ const viewBoxMap: Record<string, string> = {
 const viewBox = viewBoxMap[name] || "0 0 24 24";
 ---
 
+<!-- 
+    [EN] SVG Sprite Usage:
+    - aria-hidden="true": Hides the icon from screen readers (purely decorative). Use specific aria-labels on parents if meaning is needed.
+    - use href: References the symbol ID in the external sprite file.
+    
+    [ES] Uso de SVG Sprite:
+    - aria-hidden="true": Oculta el icono a lectores de pantalla (puramente decorativo). Usa aria-labels específicos en padres si se requiere significado.
+    - use href: Referencia el ID del símbolo en el archivo sprite externo.
+-->
 <svg
     viewBox={viewBox}
     width={width}

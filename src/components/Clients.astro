@@ -1,8 +1,28 @@
 ---
+/**
+ * @component Clients
+ * @description
+ * [EN] Displays a grid of client logos as social proof.
+ * Positioned in the footer of the Hero section, adjusting alignment based on screen size.
+ *
+ * [ES] Muestra una cuadrícula de logotipos de clientes como prueba social.
+ * Posicionado en el pie de la sección Hero, ajustando su alineación según el tamaño de pantalla.
+ */
 import Icons from "./UI/Icons.astro";
 ---
 
 <section>
+    <!-- 
+        [EN] Logo Layout
+        - flex justify-center: Center aligned on mobile.
+        - lg:justify-start: Left aligned on desktop to match the layout flow.
+        - gap-4 / lg:gap-6: Increases spacing on larger screens for better breathing room.
+        
+        [ES] Diseño de Logotipos
+        - flex justify-center: Alineado al centro en móvil.
+        - lg:justify-start: Alineado a la izquierda en escritorio para coincidir con el flujo del diseño.
+        - gap-4 / lg:gap-6: Aumenta el espaciado en pantallas grandes para mejor respiro.
+    -->
     <div class="flex justify-center gap-4 lg:justify-start lg:gap-6">
         <Icons name="client-databiz" class="w-20 h-auto lg:w-25" />
         <Icons name="client-audiophile" class="w-15 h-auto lg:w-20" />
