@@ -8,9 +8,11 @@ interface Props {
         text: string;
         icon?: string;
     }[];
+
+    class?: string;
 }
 
-const { name, items } = Astro.props;
+const { name, items, class: className } = Astro.props;
 ---
 
 <!-- DROPDOWN 1 -->
@@ -22,7 +24,9 @@ const { name, items } = Astro.props;
             <Icons name="icon-arrow-down" width={10} height={"auto"} />
         </span></label
     >
-    <span class="hidden py-2 cursor-pointer items-center gap-2"
+    <span
+        class="hidden py-2 cursor-pointer items-center gap-2 lg:text-9xl"
+        ,className,
         >{name}
         <Icons name="icon-arrow-up" width={10} height={"auto"} /></span
     >
@@ -41,7 +45,7 @@ const { name, items } = Astro.props;
                             width={20}
                             height={"auto"}
                         />
-                        <span> {item.text} </span>
+                        <span class="lg:text-md"> {item.text} </span>
                     </a>
                 </li>
             ))

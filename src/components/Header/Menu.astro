@@ -5,10 +5,11 @@ import Button from "../UI/Button.astro";
 ---
 
 <div
-    class="fixed top-0 right-0 h-full w-64 bg-white z-50 shadow-lg transform translate-x-full transition-transform duration-300 peer-checked:translate-x-0 md:static md:translate-x-0 md:w-auto md:h-auto md:bg-transparent md:shadow-none md:flex md:items-center"
+    class="fixed top-0 right-0 h-full w-64 bg-white z-50 shadow-lg transform translate-x-full transition-transform duration-300 peer-checked:translate-x-0 md:static md:translate-x-0 md:w-auto md:h-auto md:bg-transparent md:shadow-none md:flex md:items-center
+    lg:flex lg:flex-row lg:w-full lg:h-auto lg:justify-between lg:items-center lg:gap-4"
 >
     <!-- BOTÓN CERRAR (X) - Solo móvil -->
-    <div class="flex justify-end p-4 md:hidden">
+    <div class="flex justify-end p-4 md:hidden lg:hidden">
         <label
             for="menu"
             class="cursor-pointer text-gray-500 text-xl font-bold"
@@ -18,10 +19,13 @@ import Button from "../UI/Button.astro";
     </div>
 
     <!-- LISTA DE ENLACES -->
-    <ul class="flex flex-col p-4 text-gray-700 font-medium w-full">
+    <ul
+        class="flex flex-col p-4 text-gray-700 font-medium w-full lg:flex lg:flex-row lg:justify-start lg:items-center lg:gap-10 lg:pl-10"
+    >
         <!--DROPDOWN 1 -->
         <DropDown
             name="Features"
+            class="text-red-600"
             items={[
                 { text: "Todo List", icon: "icon-todo" },
                 { text: "Calendar", icon: "icon-calendar" },
@@ -45,14 +49,20 @@ import Button from "../UI/Button.astro";
         <li>
             <a href="#" class="block py-2">About</a>
         </li>
+    </ul>
+    <div
+        class="flex flex-col p-4 lg:flex-row lg:justify-center lg:items-center lg:gap-4"
+    >
+        <a
+            href="#"
+            class="block py-2 transition mt-4 text-center lg:mt-0 lg:py-0 lg:cursor-pointer"
+            >Login</a
+        >
 
-        <li>
-            <a href="#" class="block py-2 transition mt-4 text-center">Login</a>
-        </li>
         <Button
             text="Register"
             href="#"
-            class="mt-4 text-center text-neutral-700"
+            class="text-center text-neutral-700 lg:cursor-pointer"
         />
-    </ul>
+    </div>
 </div>

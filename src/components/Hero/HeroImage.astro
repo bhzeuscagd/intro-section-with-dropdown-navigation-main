@@ -1,0 +1,34 @@
+---
+import { getImage } from "astro:assets";
+import mobilHero from "./public/image-hero-mobile.png";
+import desktopHero from "./public/image-hero-desktop.png";
+
+const mobileImg = await getImage({
+    src: mobilHero,
+    format: "webp",
+    width: 750, // Ancho típico móvil
+    quality: "80",
+});
+
+const desktopImg = await getImage({
+    src: desktopHero,
+    format: "webp",
+    width: 1920, // Full HD standard
+    quality: "80",
+});
+---
+
+<section class="relative w-full h-auto overflow-hidden">
+    <picture class="w-full h-auto object-cover">
+        <!-- Mobile -->
+        <source media="(max-width: 768px)" srcset={mobileImg.src} />
+        <!-- Desktop -->
+        <source media="(min-width: 769px)" srcset={desktopImg.src} />
+        <img
+            src={desktopImg.src}
+            alt="Hero Image"
+            class="w-full h-full object-cover"
+            loading="eager"
+        />
+    </picture>
+</section>

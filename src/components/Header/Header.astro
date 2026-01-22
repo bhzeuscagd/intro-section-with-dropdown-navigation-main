@@ -3,19 +3,21 @@ import Icons from "../UI/Icons.astro";
 import Menu from "./Menu.astro";
 ---
 
-<header class="flex justify-between items-center p-4">
+<header
+    class="flex justify-between items-center p-4 lg:align-center lg:justify-start lg:py-0 lg:px-5"
+>
     <div>
         <Icons name="logo" width={80} height={"auto"} />
     </div>
     <!-- Checkbox para el menu -->
     <input type="checkbox" id="menu" class="peer hidden" />
-    <label for="menu" class="cursor-pointer">
+    <label for="menu" class="cursor-pointer lg:hidden">
         <Icons name="icon-menu" width={30} height={"auto"} />
     </label>
 
     <label
         for="menu"
-        class="fixed inset-0 bg-black/40 z-40 hidden peer-checked:block md:hidden transition-opacity"
+        class="fixed inset-0 bg-black/40 z-40 hidden peer-checked:block md:hidden transition-opacity lg:hidden"
     ></label>
 
     <Menu />
